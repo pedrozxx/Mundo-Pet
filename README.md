@@ -8,6 +8,9 @@ O sistema foi criado com foco em uma experiência intuitiva tanto no desktop qua
 
 Cada seção possui ícone, nome do período e faixa de horário, enquanto cada atendimento mostra horário, nome do pet, nome do tutor, telefone e descrição do serviço. Os dados são organizados dinamicamente no lado do cliente, sem dependência de backend. 
 
+<img width="1895" height="941" alt="mundo pet " src="https://github.com/user-attachments/assets/6bdeee57-2440-4d81-bb33-4fa16a4d61a4" />
+
+
 ## Objetivo do projeto
 
 Este projeto foi desenvolvido para simular uma agenda digital de atendimentos para um pet shop. A proposta central é facilitar o controle dos compromissos diários, reduzindo conflitos de horário e tornando o fluxo de cadastro e exclusão mais rápido para o usuário. 
