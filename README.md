@@ -1,5 +1,7 @@
 # Agenda Pet Shop
 
+🔗 **[Abrir o projeto](https://pedrozxx.github.io/Mundo-Pet/)**
+
 Aplicação web responsiva para gerenciamento de agendamentos em pet shop, desenvolvida com HTML, CSS e JavaScript puros. O projeto permite visualizar a agenda por data, cadastrar novos atendimentos em um modal acessível, organizar automaticamente os horários por período do dia e remover agendamentos existentes sem recarregar a página. 
 
 ## Visão geral
@@ -92,3 +94,11 @@ A aplicação foi entregue em arquivo único para simplificar portabilidade e te
 ## Licença
 
 Este projeto pode ser utilizado como base de estudo, portfólio ou adaptação para projetos acadêmicos e pessoais. Recomenda-se adicionar uma licença explícita no repositório, como MIT, caso o objetivo seja disponibilizar o código publicamente para reutilização.
+
+## Licenca
+
+Distribuido sob a licenca MIT. Veja [`LICENSE`](LICENSE) para mais detalhes.
+
+## Autor
+
+**Pedro Augusto Darolt** - [GitHub](https://github.com/pedrozxx) - [LinkedIn](https://www.linkedin.com/in/pedro-darolt/) - pedrocod.dev@gmail.com
