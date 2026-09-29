@@ -81,7 +81,7 @@
       if (stored) {
         try {
           const parsed = JSON.parse(stored);
-          if (Array.isArray(parsed)) return parsed;
+          if (Array.isArray(parsed)) return parsed.filter(isValidAppointment);
         } catch (error) {
           console.warn('Falha ao carregar agendamentos do armazenamento local.', error);
         }
@@ -91,6 +91,15 @@
 
     function saveAppointments() {
       safeLocalStorageSet(STORAGE_APPOINTMENTS_KEY, JSON.stringify(appointments));
+    }
+
+    function isValidAppointment(item) {
+      if (!item || typeof item !== 'object') return false;
+      const fields = ['id', 'date', 'time', 'pet', 'tutor', 'phone', 'service'];
+      if (!fields.every(key => typeof item[key] === 'string')) return false;
+      return item.id.length > 0 && /^\d{4}-\d{2}-\d{2}$/.test(item.date)
+        && /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(item.time)
+        && getPeriod(item.time) !== null;
     }
 
     function getToday() {
@@ -187,7 +196,7 @@
           const card = document.createElement('article');
           card.className = 'appointment';
           card.innerHTML = `
-            <div class="appointment-time">${item.time}</div>
+            <div class="appointment-time">${escapeHTML(item.time)}</div>
             <div class="appointment-main">
               <strong>${escapeHTML(item.pet)}</strong>
               <div class="appointment-meta">
@@ -196,7 +205,7 @@
               </div>
               <p class="appointment-service">${escapeHTML(item.service)}</p>
             </div>
-            <button class="delete-btn" type="button" aria-label="Remover agendamento de ${escapeHTML(item.pet)}" data-id="${item.id}">
+            <button class="delete-btn" type="button" aria-label="Remover agendamento de ${escapeHTML(item.pet)}" data-id="${escapeHTML(item.id)}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6M14 11v6"></path></svg>
             </button>
           `;

@@ -1,104 +1,67 @@
-# Agenda Pet Shop
+# Mundo Pet — agenda de atendimentos
 
-🔗 **[Abrir o projeto](https://pedrozxx.github.io/Mundo-Pet/)**
+Demonstração de uma agenda de pet shop em HTML, CSS e JavaScript, com validação de formulário, conflito de horários e persistência no navegador.
 
-Aplicação web responsiva para gerenciamento de agendamentos em pet shop, desenvolvida com HTML, CSS e JavaScript puros. O projeto permite visualizar a agenda por data, cadastrar novos atendimentos em um modal acessível, organizar automaticamente os horários por período do dia e remover agendamentos existentes sem recarregar a página. 
-
-## Visão geral
-
-O sistema foi criado com foco em uma experiência intuitiva tanto no desktop quanto no mobile. A interface apresenta um cabeçalho com identidade visual do projeto, seletor de tema, botão de novo agendamento, painel de resumo do dia e três seções principais da agenda: manhã, tarde e noite. 
-
-Cada seção possui ícone, nome do período e faixa de horário, enquanto cada atendimento mostra horário, nome do pet, nome do tutor, telefone e descrição do serviço. Os dados são organizados dinamicamente no lado do cliente, sem dependência de backend. 
-
-<img width="1895" height="941" alt="mundo pet " src="https://github.com/user-attachments/assets/6bdeee57-2440-4d81-bb33-4fa16a4d61a4" />
-
-
-## Objetivo do projeto
-
-Este projeto foi desenvolvido para simular uma agenda digital de atendimentos para um pet shop. A proposta central é facilitar o controle dos compromissos diários, reduzindo conflitos de horário e tornando o fluxo de cadastro e exclusão mais rápido para o usuário. 
-
-Além do aspecto funcional, o projeto também foi pensado como exercício de boas práticas de front-end, incluindo responsividade, acessibilidade, estrutura semântica, feedback visual e manipulação dinâmica do DOM com JavaScript. 
+[Abrir demonstração](https://pedrozxx.github.io/Mundo-Pet/) · [Testes](https://github.com/pedrozxx/Mundo-Pet/actions/workflows/ci.yml)
 
 ## Funcionalidades
 
-- Visualização dos agendamentos separados por manhã, tarde e noite. 
-- Exibição da agenda por data selecionada no topo da interface. 
-- Cadastro de novos atendimentos via modal. 
-- Ordenação automática dos agendamentos por horário dentro da seção correta. 
-- Remoção imediata de qualquer agendamento existente. 
-- Validação de campos obrigatórios no formulário. 
-- Bloqueio de horários fora da janela permitida entre 06:00 e 22:00. 
-- Prevenção de conflitos, impedindo dois agendamentos no mesmo horário para a mesma data. 
-- Exibição de mensagens de erro claras por campo inválido. 
-- Interface adaptada para dispositivos móveis e desktops. 
-- Suporte a tema claro e escuro com alternância manual. 
+- Consultar a agenda por data, organizada em manhã, tarde e noite.
+- Cadastrar e remover atendimentos, com nome do pet, tutor, telefone e serviço.
+- Bloquear dois atendimentos no mesmo horário e data.
+- Validar campos obrigatórios, telefone e janela de 06:00 a 22:00.
+- Alternar tema e salvar dados em `localStorage`.
 
+É uma demonstração local: **não tem servidor, login, sincronização ou backup**. Use dados fictícios. Os registros ficam associados ao navegador e à origem do site, e podem desaparecer se o armazenamento for limpo ou bloqueado.
 
-## Estrutura da interface
+## Executar
 
-A interface foi dividida em áreas bem definidas para melhorar legibilidade e navegação. O cabeçalho reúne a marca, o botão de troca de tema e a ação principal de cadastrar um novo horário, enquanto a área superior do conteúdo mostra resumo do dia e controle de data. 
-
-Abaixo dessa área, a agenda aparece em três cards principais. Cada card representa um período do dia e recebe os agendamentos conforme a hora selecionada pelo usuário no cadastro. 
-
-## Regras de negócio
-
-As regras principais ficam concentradas no JavaScript da aplicação. Quando o usuário envia o formulário, os dados passam por validação de preenchimento obrigatório, verificação de telefone, análise do intervalo permitido de horário e checagem de conflito com outros agendamentos da mesma data. 
-
-Depois de validado, o compromisso é inserido na lista em memória, reposicionado conforme o horário e exibido no período correspondente. Caso a data exibida seja alterada, a tela recalcula apenas os itens daquele dia e atualiza os indicadores do resumo. 
-
-### Stack
-
-- HTML5 semântico. 
-- CSS3 com variáveis, `clamp()`, media queries e `color-mix()`. 
-- JavaScript Vanilla para manipulação do DOM, validação, ordenação e controle do modal. 
-- Fonte Satoshi via Fontshare. 
-- SVG inline para identidade visual e ícones principais. 
-
-
-## Organização do código
-
-A estrutura foi mantida simples para facilitar leitura e estudo. O arquivo principal concentra três camadas: marcação HTML para a estrutura, CSS para estilo e responsividade, e JavaScript para estado, eventos e regras da agenda. 
-
-## Como executar o projeto
-
-Como se trata de uma aplicação estática, a execução é simples. Basta baixar o arquivo HTML e abri-lo em qualquer navegador moderno. 
-
-### Passo a passo
-
-1. Clone este repositório.
-2. Acesse a pasta do projeto.
-3. Abra o arquivo `petshop-agenda.html` no navegador.
-
-Também é possível utilizar extensões como Live Server no VS Code para uma experiência de desenvolvimento mais prática. 
-
-## Estrutura sugerida do repositório
-
-```text
-petshop-agenda/
-├── README.md
-└── petshop-agenda.html
+```bash
+git clone https://github.com/pedrozxx/Mundo-Pet.git
+cd Mundo-Pet
 ```
 
-A aplicação foi entregue em arquivo único para simplificar portabilidade e testes. Isso facilita compartilhar, publicar no GitHub Pages ou adaptar futuramente para uma estrutura com arquivos separados. 
+Abra `index.html` em um navegador moderno. Para usar uma origem HTTP estável, abra a pasta com o Live Server do VS Code ou, caso tenha Python instalado:
 
-## Fluxo de uso
+```bash
+python -m http.server 8000
+```
 
-1. O usuário escolhe ou confirma a data da agenda no topo da página. 
-2. A aplicação mostra apenas os agendamentos cadastrados para aquela data. 
-3. Ao clicar em “Novo agendamento”, o modal é aberto com foco no primeiro campo. 
-4. O formulário solicita tutor, pet, telefone, serviço, data e hora. 
-5. O sistema valida os campos e impede horários inválidos ou conflitantes. 
-6. Após salvar, o item aparece imediatamente na seção correta e em ordem cronológica. 
-7. Caso o usuário remova um atendimento, a linha desaparece instantaneamente. 
+Acesse <http://localhost:8000>. O aplicativo não precisa de Node.js nem de instalação de pacotes para funcionar; Node.js 22 é usado apenas nos testes.
 
-## Licença
+## Testes
 
-Este projeto pode ser utilizado como base de estudo, portfólio ou adaptação para projetos acadêmicos e pessoais. Recomenda-se adicionar uma licença explícita no repositório, como MIT, caso o objetivo seja disponibilizar o código publicamente para reutilização.
+```bash
+npm ci
+npm test
+```
 
-## Licenca
+Os testes usam o executor nativo do Node e jsdom para carregar o HTML e o script reais. Verificam que dados persistidos não injetam atributos/HTML, que registros inválidos não quebram a agenda e que excluir um atendimento preserva os demais e atualiza o armazenamento. Não cobrem todos os fluxos do formulário nem substituem testes em navegador.
 
-Distribuido sob a licenca MIT. Veja [`LICENSE`](LICENSE) para mais detalhes.
+Para conferir manualmente: crie uma consulta futura, tente repetir o horário, recarregue a página e remova a consulta. Confira também navegação por teclado, fechamento do modal e troca de tema.
 
-## Autor
+## Estrutura
 
-**Pedro Augusto Darolt** - [GitHub](https://github.com/pedrozxx) - [LinkedIn](https://www.linkedin.com/in/pedro-darolt/) - pedrocod.dev@gmail.com
+```text
+index.html             estrutura e formulário
+style.css              layout, responsividade e temas
+script.js              estado, validação, persistência e DOM
+tests/agenda.test.cjs   testes de regressão
+.github/workflows/ci.yml testes em push e pull request
+```
+
+## Decisões e limites
+
+- **JavaScript puro:** mantém o fluxo de eventos e a manipulação do DOM explícitos para estudo.
+- **Persistência local:** basta para a demonstração, mas não impede conflitos entre computadores diferentes.
+- **Conflito por horário exato:** o projeto não calcula duração de serviços nem agenda por profissional.
+- **Horários de hoje:** o formulário exige, no mínimo, a próxima hora inteira e bloqueia datas passadas.
+- **Armazenamento não confiável:** registros carregados passam por validação de estrutura; valores inseridos no HTML são escapados.
+- **Falha de gravação:** a aplicação continua em memória se o navegador bloquear o armazenamento; ainda não há aviso específico de perda de persistência.
+
+Antes de usar como sistema real seriam necessários backend, controle de acesso, regras de concorrência e tratamento adequado dos dados pessoais.
+
+## Autoria e licença
+
+Pedro Augusto Darolt · [GitHub](https://github.com/pedrozxx) · [LinkedIn](https://www.linkedin.com/in/pedro-darolt/).
+Distribuído sob [licença MIT](LICENSE).
